@@ -40,13 +40,12 @@ public class Movement : MonoBehaviour
             currentScale.y *= -1;
             transform.localScale = currentScale;
             
-        }
-        else if(Input.GetKeyDown("s"))
+        }/*else if(Input.GetKeyDown("s"))
         {
             rb2D.gravityScale *= -1;
             Vector3 currentScale = transform.localScale;
             currentScale.y *= -1;
             transform.localScale = currentScale;
-        }
+        }*/
     }
 }
