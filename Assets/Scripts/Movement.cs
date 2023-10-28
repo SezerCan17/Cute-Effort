@@ -1,5 +1,7 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -8,13 +10,17 @@ public class Movement : MonoBehaviour
     private int speed;
     public Rigidbody2D rb2D;
     bool rlook;
-    Vector3 currentPos;
-    Vector3 currentScale;
+    public Renderer renderer;
+    private CapsuleCollider2D CapsuleCollider2d;
+   
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Rigidbody2D>();
+        renderer = GetComponent<Renderer>();
+        CapsuleCollider2d = GetComponent<CapsuleCollider2D>();
         rlook = true;
+        
         
     }
 
@@ -40,12 +46,45 @@ public class Movement : MonoBehaviour
             currentScale.y *= -1;
             transform.localScale = currentScale;
             
-        }/*else if(Input.GetKeyDown("s"))
-        {
-            rb2D.gravityScale *= -1;
-            Vector3 currentScale = transform.localScale;
-            currentScale.y *= -1;
-            transform.localScale = currentScale;
-        }*/
+        }
+      
     }
+    
+       private IEnumerator SlowDownCoroutine()
+        {
+            Debug.Log("girdi");
+            yield return new WaitForSeconds(2.0f);
+            speed = 26;
+            Debug.Log("speed=26");
+
+        }
+    
+    
+    public void SlowDown()
+    {
+        speed = 5;
+        Debug.Log("speed=5");
+        StartCoroutine(SlowDownCoroutine());
+    }
+    public void Freeze()
+    {
+        speed = 0;
+        Debug.Log("speed=0");
+        StartCoroutine(SlowDownCoroutine());
+    }
+
+    public void Speed()
+    {
+        speed = 40;
+        Debug.Log("speed=40");
+        StartCoroutine(SlowDownCoroutine());
+
+    }
+
+   
+   
+
+
+
+    
 }

@@ -7,6 +7,10 @@ TagManager:
   - Diken
   - Water
   - "SuAlt\u0131"
+  - SlowDown
+  - Freeze
+  - Speed
+  - Health
   layers:
   - Default
   - TransparentFX
