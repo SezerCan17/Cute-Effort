@@ -47,7 +47,8 @@ public class HealthController : MonoBehaviour
         }
         if(currentHealth==0)
         {
-            GameManager.Restart();
+
+            GameManager.Die();
         }
     }
     

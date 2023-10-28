@@ -6,24 +6,35 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    private float gameTime = 0f; // Zamanlayýcý deðiþkeni
+    public float gameTime = 0f; // Zamanlayýcý deðiþkeni
     public TextMeshProUGUI timerText;
+    private bool TimerStart;
     
 
     void Start()
     {
-        StartCoroutine(StartTimer());
+        TimerStart = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameTime += Time.deltaTime;
-        int minutes = Mathf.FloorToInt(gameTime / 60);
-        int seconds = Mathf.FloorToInt(gameTime % 60);
+        if(TimerStart)
+        {
+            gameTime += Time.deltaTime;
+            int minutes = Mathf.FloorToInt(gameTime / 60);
+            int seconds = Mathf.FloorToInt(gameTime % 60);
 
-        // TMP ile zamaný göster
-        timerText.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+            // TMP ile zamaný göster
+            timerText.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
+        
+    }
+
+    public void StartTime()
+    {
+        StartCoroutine(StartTimer());
+        TimerStart = true;
     }
 
     private IEnumerator StartTimer()
