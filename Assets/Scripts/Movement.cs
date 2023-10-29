@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     bool rlook;
     public Renderer renderer;
     private CapsuleCollider2D CapsuleCollider2d;
+    public AudioSource audioSource;
+    public AudioSource audioSource2;
    
     // Start is called before the first frame update
     void Start()
@@ -45,6 +47,8 @@ public class Movement : MonoBehaviour
             Vector3 currentScale = transform.localScale;
             currentScale.y *= -1;
             transform.localScale = currentScale;
+            audioSource.Play();
+            
             
         }
       

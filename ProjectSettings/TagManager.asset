@@ -11,6 +11,8 @@ TagManager:
   - Freeze
   - Speed
   - Health
+  - "s\u0131n\u0131r"
+  - finish
   layers:
   - Default
   - TransparentFX
